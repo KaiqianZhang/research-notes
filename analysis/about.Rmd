@@ -5,4 +5,4 @@ output:
     toc: false
 ---
 
-Describe your project.
+This website is for writing down everyday learning from research. The content includes knowledge from statistics, genetics/genomics, and programming. I hope this can help myself remember those skills learned from research!
