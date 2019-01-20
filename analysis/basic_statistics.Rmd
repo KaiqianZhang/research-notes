@@ -1,0 +1,95 @@
+---
+title: "Basic Statistics"
+author: "Kaiqian Zhang"
+date: "1/19/2019"
+output:
+  workflowr::wflow_html:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### P-value
+Given null hypothesis is true, the probability of finding the observed, or more extreme.
+The smaller the p vlue, the stronger the evidence against the null hypothesis.
+
+### Taylor expansion
+An expansion of a function into an infinite sum of terms. Say $f(x)$ around the point $x=a$ is 
+$$
+f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ...
+$$
+
+### Hypothesis testing
+
+* Type I error(alpha): reject null given null is true.
+
+* Type II error(beta): fail to reject alternative given alternative is true.
+
+* Power: not making Type II error, reject the null given null is false.
+
+$$
+\text{power} \propto \frac{\text{sample size}}{(\text{effect size}, \text{alpha})}.
+$$
+
+
+### Confidence interval
+If confidence intervals are constructed using a given confidence level from an infinite number of independent sample statistics, the proportion of those intervals that contain the true value of the parameter will be equal to the confidence level.
+
+### Moment generating functions
+The moment-generating function of a real-valued random variable `X` is an alternative specification of its probability distribution. 
+$$
+M_X(t) = \text{E}[e^{tX}].
+$$
+
+### Central limit theorem
+
+Most data have a normal distribution because of central limit theorem. 
+CLT: sample means are normally distributed. 
+* give any distribution, draw samples from this distribution
+* compute one sample mean
+* repeat many times and get many sample means
+* then sample means are normally distributed
+
+Why CLT is important?
+We don't need to care about what actually distribution data come from. We can:
+* use mean's normal distribution to make confidence intervals;
+* perform a t-test, ask if there is a difference between two sample means;
+* or ANOVA, ask if there is a difference among three or more than three sample means.
+
+In order to get CLT work, the sample size is at least 30.
+
+### Law of large numbers
+According to the law, the average of the results obtained from a large number of trials should be close to the expected value, and will tend to become closer as more trials are performed.
+
+### Monte Carlo Simulations
+
+
+
+### Markov’s inequalities
+
+
+### Chebyshev’s theorem
+
+
+### Fourier transform
+
+
+### Maximum likihood
+
+
+### EM algorithm
+
+
+### FDR
+
+
+### Gradient ascent and descent
+
+
+
+
+
+
+
