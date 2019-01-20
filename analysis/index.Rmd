@@ -7,3 +7,6 @@ output:
 ---
 
 Welcome to Kaiqian's research website. This is exactly Kaiqian's daily life with lovely research:)
+
+Please click on this [Basic Statistics](basic_statistics.html) to see my notes.
+
