@@ -8,5 +8,6 @@ output:
 
 Welcome to Kaiqian's research website. This is exactly Kaiqian's daily life with lovely research:)
 
-Please click on this [Basic Statistics](basic_statistics.html) to see my notes.
+* Please click on [Basic Statistics](basic_statistics.html) to see my notes.
 
+* Please click on [Deep Learning Coursera Notes](deep_learning_coursera.html) to see my notes.

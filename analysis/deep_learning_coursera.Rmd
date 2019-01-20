@@ -1,0 +1,22 @@
+---
+title: "Deep Learning Cousera Notes"
+author: "Kaiqian Zhang"
+date: "1/19/2019"
+output:
+  workflowr::wflow_html:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* train set and development set should come from the same distribution.
+
+* if the algorithm has bias or variance problem?
+Suppose the base error is 0% for classifying cat vs non-cat by human eyes. 
+
+  - If the train set error is 1% and the development set error is 15%, the algorithm is overfitting the data. So it has high variance. 
+  
+  - If the train set error is 15% and the development set error is 16%, the algorithm is underfitting the data. So it has high bias.
+  
