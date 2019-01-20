@@ -47,15 +47,23 @@ $$
 
 Most data have a normal distribution because of central limit theorem. 
 CLT: sample means are normally distributed. 
+
 * give any distribution, draw samples from this distribution
+
 * compute one sample mean
+
 * repeat many times and get many sample means
+
 * then sample means are normally distributed
 
 Why CLT is important?
+
 We don't need to care about what actually distribution data come from. We can:
+
 * use mean's normal distribution to make confidence intervals;
+
 * perform a t-test, ask if there is a difference between two sample means;
+
 * or ANOVA, ask if there is a difference among three or more than three sample means.
 
 In order to get CLT work, the sample size is at least 30.
