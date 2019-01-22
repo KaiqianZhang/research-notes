@@ -15,6 +15,9 @@ knitr::opts_chunk$set(echo = TRUE)
 Given null hypothesis is true, the probability of finding the observed, or more extreme.
 The smaller the p vlue, the stronger the evidence against the null hypothesis.
 
+### R-squared
+R-squared = Explained variation / Total variation
+
 ### Taylor expansion
 An expansion of a function into an infinite sum of terms. Say $f(x)$ around the point $x=a$ is 
 $$
@@ -70,6 +73,14 @@ In order to get CLT work, the sample size is at least 30.
 
 ### Law of large numbers
 According to the law, the average of the results obtained from a large number of trials should be close to the expected value, and will tend to become closer as more trials are performed.
+
+### Logistic regression
+$$
+P(y = 1) = \frac{1}{1+e^{-(X\beta)}}
+$$
+### Maximum likelihood estimation
+
+
 
 ### Monte Carlo Simulations
 
