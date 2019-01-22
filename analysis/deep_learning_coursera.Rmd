@@ -46,6 +46,7 @@ L2-regularization relies on the assumption that a model with small weights is si
 
 ### L2-regularization
 **What you should remember about L2-regularization** -- the implications of L2-regularization on:
+
 - The cost computation:
     - A regularization term is added to the cost
     
@@ -58,6 +59,7 @@ L2-regularization relies on the assumption that a model with small weights is si
 ### drop-out
 
 **What you should remember about dropout:**
+
 - Dropout is a regularization technique.
 
 - You only use dropout during training. Don't use dropout (randomly eliminate nodes) during test time.
