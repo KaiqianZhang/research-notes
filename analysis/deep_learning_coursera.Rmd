@@ -20,3 +20,64 @@ Suppose the base error is 0% for classifying cat vs non-cat by human eyes.
   
   - If the train set error is 15% and the development set error is 16%, the algorithm is underfitting the data. So it has high bias.
   
+* high bias solution: bigger network; train longer; suitable neural network architecture.
+
+* high variance solution: more data; regularization (reduce overfitting); suitable neural network architecture.
+
+## Notebook: Initialization
+
+**What you should remember from this notebook**:
+
+- Different initializations lead to different results
+
+- Random initialization is used to break symmetry and make sure different hidden units can learn different things
+
+- Don't intialize to values that are too large
+
+- He initialization works well for networks with ReLU activations. 
+
+He initialization: initialize $W^{[l]}$ by multiplying `np.random.randn(..,..)` by $\sqrt{\frac{2}{\text{dimension of the previous layer}}}$.
+
+## Notebook: Regularization
+
+**What is L2-regularization actually doing?**:
+
+L2-regularization relies on the assumption that a model with small weights is simpler than a model with large weights. Thus, by penalizing the square values of the weights in the cost function you drive all the weights to smaller values. It becomes too costly for the cost to have large weights! This leads to a smoother model in which the output changes more slowly as the input changes. 
+
+### L2-regularization
+**What you should remember about L2-regularization** -- the implications of L2-regularization on:
+- The cost computation:
+    - A regularization term is added to the cost
+    
+- The backpropagation function:
+    - There are extra terms in the gradients with respect to weight matrices
+    
+- Weights end up smaller ("weight decay"): 
+    - Weights are pushed to smaller values.
+    
+### drop-out
+
+**What you should remember about dropout:**
+- Dropout is a regularization technique.
+
+- You only use dropout during training. Don't use dropout (randomly eliminate nodes) during test time.
+
+- Apply dropout both during forward and backward propagation.
+
+- During training time, divide each dropout layer by keep_prob to keep the same expected value for the activations. For example, if keep_prob is 0.5, then we will on average shut down half the nodes, so the output will be scaled by 0.5 since only the remaining half are contributing to the solution. Dividing by 0.5 is equivalent to multiplying by 2. Hence, the output now has the same expected value. You can check that this works even when keep_prob is other values than 0.5. 
+
+## Notebook: Gradient checking
+
+**What you should remember from this notebook**:
+- Gradient checking verifies closeness between the gradients from backpropagation and the numerical approximation of the gradient (computed using forward propagation).
+
+- Gradient checking is slow, so we don't run it in every iteration of training. You would usually run it only to make sure your code is correct, then turn it off and use backprop for the actual learning process. 
+
+- Gradient Checking, at least as we've presented it, doesn't work with dropout. You would usually run the gradient check algorithm without dropout to make sure your backprop is correct, then add dropout. 
+
+
+
+
+
+
+
