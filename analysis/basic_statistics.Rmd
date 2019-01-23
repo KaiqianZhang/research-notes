@@ -35,9 +35,25 @@ $$
 $$
 \text{power} \propto \frac{\text{sample size}}{(\text{effect size}, \text{alpha})}.
 $$
+### Bootstrapping
+
+- sample data 
+
+- calculate sample mean
+
+- sample the same size from the original sample with replacement (i.e we still have n samples and duplicates are okay)
+
+- calculate this sample mean
+
+- repeat many times and get a lot of sample means
 
 
 ### Confidence interval
+
+- 95% confidence interval: interval convers 95% such samples means in the bootstrapping.
+
+- If 95% confidence intervals of X and Y are not overlapping, then mean of X and mean of Y are significantly different. If not, we still need to t-test to test that.
+
 If confidence intervals are constructed using a given confidence level from an infinite number of independent sample statistics, the proportion of those intervals that contain the true value of the parameter will be equal to the confidence level.
 
 ### Moment generating functions
@@ -78,7 +94,29 @@ According to the law, the average of the results obtained from a large number of
 $$
 P(y = 1) = \frac{1}{1+e^{-(X\beta)}}
 $$
+
 ### Maximum likelihood estimation
+
+- you expect data come from some distribution
+
+- compute likelihood of your data given some assumed parameters
+$$
+L(\theta | \text{data}) = P(\text{data} | \theta) 
+$$
+
+- consider log-likelihood to make computation easier, get a log-likihood function of the parameter you want to estimate
+
+- take derivative of the log-likelihood function and set it to 0
+
+### Gibbs sampling
+
+### Variational inference
+
+### EM algorithm
+
+### FDR
+
+### Empirical Bayes
 
 
 
@@ -96,12 +134,6 @@ $$
 
 
 ### Maximum likihood
-
-
-### EM algorithm
-
-
-### FDR
 
 
 ### Gradient ascent and descent
