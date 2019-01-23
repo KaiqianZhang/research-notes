@@ -436,7 +436,7 @@ div.section {
 </div>
 
 
-<p><strong>Last updated:</strong> 2019-01-22</p>
+<p><strong>Last updated:</strong> 2019-01-23</p>
 <strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
 <ul>
 <li>
@@ -460,7 +460,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/KaiqianZhang/research-notes/tree/4451daa846ea0331a684d8ecb9eb3253f078dbdd" target="_blank">4451daa</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/KaiqianZhang/research-notes/tree/c38c3edc9975f30ec5ec75e75c9971ca60a1dbda" target="_blank">c38c3ed</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -494,6 +494,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/KaiqianZhang/research-notes/blob/c38c3edc9975f30ec5ec75e75c9971ca60a1dbda/analysis/basic_statistics.Rmd" target="_blank">c38c3ed</a>
+</td>
+<td style="text-align:left;">
+kaiqian
+</td>
+<td style="text-align:left;">
+2019-01-23
+</td>
+<td style="text-align:left;">
+update stats for UW interview
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/KaiqianZhang/research-notes/286a3e1cbe1698e94a960da328d4497f41fd0d62/docs/basic_statistics.html" target="_blank">286a3e1</a>
+</td>
+<td style="text-align:left;">
+kaiqian
+</td>
+<td style="text-align:left;">
+2019-01-22
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -624,10 +658,21 @@ f(x) = f(a) + f&#39;(a)(x-a) + \frac{f&#39;&#39;(a)}{2!}(x-a)^2 + ...
 </ul>
 <p><span class="math display">\[
 \text{power} \propto \frac{\text{sample size}}{(\text{effect size}, \text{alpha})}.
-\]</span></p>
+\]</span> ### Bootstrapping</p>
+<ul>
+<li><p>sample data</p></li>
+<li><p>calculate sample mean</p></li>
+<li><p>sample the same size from the original sample with replacement (i.e we still have n samples and duplicates are okay)</p></li>
+<li><p>calculate this sample mean</p></li>
+<li><p>repeat many times and get a lot of sample means</p></li>
+</ul>
 </div>
 <div id="confidence-interval" class="section level3">
 <h3>Confidence interval</h3>
+<ul>
+<li><p>95% confidence interval: interval convers 95% such samples means in the bootstrapping.</p></li>
+<li><p>If 95% confidence intervals of X and Y are not overlapping, then mean of X and mean of Y are significantly different. If not, we still need to t-test to test that.</p></li>
+</ul>
 <p>If confidence intervals are constructed using a given confidence level from an infinite number of independent sample statistics, the proportion of those intervals that contain the true value of the parameter will be equal to the confidence level.</p>
 </div>
 <div id="moment-generating-functions" class="section level3">
@@ -662,7 +707,33 @@ M_X(t) = \text{E}[e^{tX}].
 <h3>Logistic regression</h3>
 <p><span class="math display">\[
 P(y = 1) = \frac{1}{1+e^{-(X\beta)}}
-\]</span> ### Maximum likelihood estimation</p>
+\]</span></p>
+</div>
+<div id="maximum-likelihood-estimation" class="section level3">
+<h3>Maximum likelihood estimation</h3>
+<ul>
+<li><p>you expect data come from some distribution</p></li>
+<li><p>compute likelihood of your data given some assumed parameters <span class="math display">\[
+L(\theta | \text{data}) = P(\text{data} | \theta) 
+\]</span></p></li>
+<li><p>consider log-likelihood to make computation easier, get a log-likihood function of the parameter you want to estimate</p></li>
+<li><p>take derivative of the log-likelihood function and set it to 0</p></li>
+</ul>
+</div>
+<div id="gibbs-sampling" class="section level3">
+<h3>Gibbs sampling</h3>
+</div>
+<div id="variational-inference" class="section level3">
+<h3>Variational inference</h3>
+</div>
+<div id="em-algorithm" class="section level3">
+<h3>EM algorithm</h3>
+</div>
+<div id="fdr" class="section level3">
+<h3>FDR</h3>
+</div>
+<div id="empirical-bayes" class="section level3">
+<h3>Empirical Bayes</h3>
 </div>
 <div id="monte-carlo-simulations" class="section level3">
 <h3>Monte Carlo Simulations</h3>
@@ -678,12 +749,6 @@ P(y = 1) = \frac{1}{1+e^{-(X\beta)}}
 </div>
 <div id="maximum-likihood" class="section level3">
 <h3>Maximum likihood</h3>
-</div>
-<div id="em-algorithm" class="section level3">
-<h3>EM algorithm</h3>
-</div>
-<div id="fdr" class="section level3">
-<h3>FDR</h3>
 </div>
 <div id="gradient-ascent-and-descent" class="section level3">
 <h3>Gradient ascent and descent</h3>
