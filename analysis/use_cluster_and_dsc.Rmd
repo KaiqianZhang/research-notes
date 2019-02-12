@@ -1,0 +1,123 @@
+---
+title: "Use Clusters and DSC"
+author: "Kaiqian Zhang"
+date: "2/12/2019"
+output:
+  workflowr::wflow_html:
+    code_folding: hide
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We usually want to perform large-scale simulations on clusters. And as a research beginner, running my code on cluster is really a neck of pain. Here I take notes on how to use UChicago's rcc clusters. The simulation tool I am using is DSC, Dynamic Statistical Comparisons, from Matthew Stephens lab. DSC provides a framework for managing computational benchmarking experiments that compare several competing methods for a task across datasets or simulation scenarios.
+
+## Run simulations using DSC
+
+Suppose I git push a new version of my R package `susieR` and I want to run simulations using this R package on clusters.
+
+* step 1: log into my rcc account
+
+```
+ssh kaiqianz@midway2.rcc.uchicago.edu
+```
+
+I will need to enter my password.
+
+* step 2: load R and git clone repo for my R package. I also need to install the local version `susieR` in the R
+
+```
+module load R/3.5.1 
+```
+
+cd to the directory I want to clone the repo,
+
+```
+git clone URL the-name-I-like-for-R-package
+```
+
+Then I can open R and devtools::install() the local R package
+
+```
+cd the-name-I-like-for-R-package
+
+R
+
+install.package('devtools')
+
+devtools::install()
+
+library(susieR)
+
+q()
+```
+
+* step 3: before running DSC, we'd better get onto an interactive node on cluster to perform large-scale simulations. I list three kinds of commands I have tried over the summer.
+
+```
+sinteractive --partition=mstephens --time=24:00:00 --mem=8G
+
+sinteractive --exclusive --partition=broadwl --nodes=1 --time=24:00:00 
+
+sinteractive --partition=mstephens --time=48:00:00 --mem=64G —cpus-per-task=28
+```
+
+* step 4: go to the DSC repo, which is a repo I created for simulation code. In this case, we have `dsc-susie`. We can first run a truncate version to see if this works before large-scale simulations.
+
+```
+cd dsc-susie
+
+dsc benchmark.dsc target susie_v --truncate
+```
+After we pass the truncate version, we can run everything.
+
+```
+dsc benchmark.dsc target susie_v --replicate 50 -c 16
+```
+
+## Retrieve results from DSC and clusters or debug
+
+Here we would use online python notebook to connect my cluster and easily open my simulation results. Note that I have `jupyterlab-server` installed on my midway. 
+
+```
+cd jupyterlab-server
+
+sbatch jupyter-lab.sbatch 
+```
+
+I would see `Submitted batch job 57433075`.
+
+```
+cat nb-log-57433075.out
+```
+
+I would get a command start with `ssh` and a website looks like `localhost:9148`. Now open a new terminal and get on midway again and paste that `ssh` command. 
+
+```
+ssh kaiqianz@midway2.rcc.uchicago.edu
+
+ssh -N -L 9148:10.50.221.3:9148 kaiqianz@midway2.rcc.uchicago.edu -v
+```
+
+Then we can open the website `localhost:9148` on google chrome. To retrieve the token asked from the website, we do
+
+```
+cat nb-log-57433075.err
+```
+to get the token.
+
+Now we are ready to go. We have all simulation results in python notebook so that we can do analysis!
+
+
+
+
+
+
+
+
+
+
+
+

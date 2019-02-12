@@ -11,3 +11,5 @@ Welcome to Kaiqian's research website. This is exactly Kaiqian's daily life with
 * Please click on [Basic Statistics](basic_statistics.html) to see my notes.
 
 * Please click on [Deep Learning Coursera Notes](deep_learning_coursera.html) to see my notes.
+
+* Please click on [Clusters and DSC Notes](use_cluster_and_dsc.html) to see my notes.
