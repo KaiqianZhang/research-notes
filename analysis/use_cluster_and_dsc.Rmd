@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-We usually want to perform large-scale simulations on clusters. And as a research beginner, running my code on cluster is really a neck of pain. Here I take notes on how to use UChicago's rcc clusters. The simulation tool I am using is DSC, Dynamic Statistical Comparisons, from Matthew Stephens lab. DSC provides a framework for managing computational benchmarking experiments that compare several competing methods for a task across datasets or simulation scenarios.
+We usually want to perform large-scale simulations on clusters. And as a research beginner, running my code on cluster is really a pain on the neck. Here I take notes on how to use UChicago's rcc clusters. The simulation tool I am using is DSC, Dynamic Statistical Comparisons, from Matthew Stephens lab. DSC provides a framework for managing computational benchmarking experiments that compare several competing methods for a task across datasets or simulation scenarios.
 
 ## Run simulations using DSC
 
