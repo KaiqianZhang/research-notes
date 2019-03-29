@@ -89,15 +89,20 @@ sbatch jupyter-lab.sbatch
 
 I would see `Submitted batch job 57433075`.
 
+want until showq has the job, check the following
+
+```
+showq
+ll
+```
+
 ```
 cat nb-log-57433075.out
 ```
 
-I would get a command start with `ssh` and a website looks like `localhost:9148`. Now open a new terminal and get on midway again and paste that `ssh` command. 
+I would get a command start with `ssh` and a website looks like `localhost:9148`. Now open a new terminal and paste that `ssh` command on my own computer, not on midway. 
 
 ```
-ssh kaiqianz@midway2.rcc.uchicago.edu
-
 ssh -N -L 9148:10.50.221.3:9148 kaiqianz@midway2.rcc.uchicago.edu -v
 ```
 
@@ -110,7 +115,14 @@ to get the token.
 
 Now we are ready to go. We have all simulation results in python notebook so that we can do analysis!
 
+## How to debug then...
+Now we are on the online jupyter notebook which contains all the error data from midway. When we ran dsc, we got the error message like `Failed to execute Rscript .sos/sim_gauss_0_7dc66a52.R`. Now go to the terminal and cat the Rscript and paste it into the jupyter notebook for your debugging!
 
+In the terminal
+```
+cat .sos/sim_gauss_0_7dc66a52.R
+```
+And then paste everything shown on the screen to your jupyter notebook.
 
 
 
