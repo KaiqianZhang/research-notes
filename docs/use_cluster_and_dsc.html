@@ -76,9 +76,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -196,8 +194,6 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -364,6 +360,16 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -430,38 +436,119 @@ div.section {
 
 
 <h1 class="title toc-ignore">Use Clusters and DSC</h1>
-<h4 class="author"><em>Kaiqian Zhang</em></h4>
-<h4 class="date"><em>2/12/2019</em></h4>
+<h4 class="author">Kaiqian Zhang</h4>
+<h4 class="date">2/12/2019</h4>
 
 </div>
 
 
-<p><strong>Last updated:</strong> 2019-02-12</p>
-<strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
-<ul>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>R Markdown file:</strong> up-to-date </summary></p>
+<a data-toggle="tab" href="#report"> Report <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2019-03-29
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>research-notes/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.2.0). The <em>Report</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="report" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
 <p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
-</details>
-</li>
-<li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Environment:</strong> empty </summary></p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
 <p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
-</details>
-</li>
-<li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Seed:</strong> <code>set.seed(20190118)</code> </summary></p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20190118code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20190118)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20190118code" class="panel-collapse collapse">
+<div class="panel-body">
 <p>The command <code>set.seed(20190118)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
-</details>
-</li>
-<li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Session information:</strong> recorded </summary></p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
 <p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
-</details>
-</li>
-<li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/KaiqianZhang/research-notes/tree/229fed9cd06759f3c5eac504eab276287aeff908" target="_blank">229fed9</a> </summary></p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaiqianZhangresearchnotestree033b94203eea12b9ced105cdd122b52aec4db816targetblank033b942a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaiqianZhang/research-notes/tree/033b94203eea12b9ced105cdd122b52aec4db816" target="_blank">033b942</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaiqianZhangresearchnotestree033b94203eea12b9ced105cdd122b52aec4db816targetblank033b942a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
@@ -476,88 +563,134 @@ Unstaged changes:
     Modified:   analysis/basic_statistics.Rmd
 
 </code></pre>
-Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
-</li>
-</ul>
-<details> <summary> <small><strong>Expand here to see past versions:</strong></small> </summary>
-<ul>
-<table style="border-collapse:separate; border-spacing:5px;">
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the R Markdown and HTML files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view them.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
 <thead>
 <tr>
-<th style="text-align:left;">
+<th>
 File
 </th>
-<th style="text-align:left;">
+<th>
 Version
 </th>
-<th style="text-align:left;">
+<th>
 Author
 </th>
-<th style="text-align:left;">
+<th>
 Date
 </th>
-<th style="text-align:left;">
+<th>
 Message
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td>
 Rmd
 </td>
-<td style="text-align:left;">
-<a href="https://github.com/KaiqianZhang/research-notes/blob/229fed9cd06759f3c5eac504eab276287aeff908/analysis/use_cluster_and_dsc.Rmd" target="_blank">229fed9</a>
+<td>
+<a href="https://github.com/KaiqianZhang/research-notes/blob/033b94203eea12b9ced105cdd122b52aec4db816/analysis/use_cluster_and_dsc.Rmd" target="_blank">033b942</a>
 </td>
-<td style="text-align:left;">
+<td>
 kaiqian
 </td>
-<td style="text-align:left;">
-2019-02-12
+<td>
+2019-03-29
 </td>
-<td style="text-align:left;">
-revise neck pain typo
+<td>
+update how to debug after opening a jupyter notebook
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td>
 html
 </td>
-<td style="text-align:left;">
-<a href="https://cdn.rawgit.com/KaiqianZhang/research-notes/bc90c90b195957f5f96fdfa220afe8e9d84bac58/docs/use_cluster_and_dsc.html" target="_blank">bc90c90</a>
+<td>
+<a href="https://rawcdn.githack.com/KaiqianZhang/research-notes/c201d2bf390b73938d94578802095e2ec09420e7/docs/use_cluster_and_dsc.html" target="_blank">c201d2b</a>
 </td>
-<td style="text-align:left;">
+<td>
 kaiqian
 </td>
-<td style="text-align:left;">
+<td>
 2019-02-12
 </td>
-<td style="text-align:left;">
+<td>
 Build site.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td>
 Rmd
 </td>
-<td style="text-align:left;">
-<a href="https://github.com/KaiqianZhang/research-notes/blob/521b015a4d5a4ab1ecf3a2f8d9fedaedcc39de3a/analysis/use_cluster_and_dsc.Rmd" target="_blank">521b015</a>
+<td>
+<a href="https://github.com/KaiqianZhang/research-notes/blob/229fed9cd06759f3c5eac504eab276287aeff908/analysis/use_cluster_and_dsc.Rmd" target="_blank">229fed9</a>
 </td>
-<td style="text-align:left;">
+<td>
 kaiqian
 </td>
-<td style="text-align:left;">
+<td>
 2019-02-12
 </td>
-<td style="text-align:left;">
+<td>
+revise neck pain typo
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaiqianZhang/research-notes/bc90c90b195957f5f96fdfa220afe8e9d84bac58/docs/use_cluster_and_dsc.html" target="_blank">bc90c90</a>
+</td>
+<td>
+kaiqian
+</td>
+<td>
+2019-02-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaiqianZhang/research-notes/blob/521b015a4d5a4ab1ecf3a2f8d9fedaedcc39de3a/analysis/use_cluster_and_dsc.Rmd" target="_blank">521b015</a>
+</td>
+<td>
+kaiqian
+</td>
+<td>
+2019-02-12
+</td>
+<td>
 add my notes on clusters and DSC
 </td>
 </tr>
 </tbody>
 </table>
-</ul>
-<p></details></p>
-<hr />
+</div>
+<hr>
+</div>
+</div>
+</div>
 <p>We usually want to perform large-scale simulations on clusters. And as a research beginner, running my code on cluster is really a pain on the neck. Here I take notes on how to use UChicago’s rcc clusters. The simulation tool I am using is DSC, Dynamic Statistical Comparisons, from Matthew Stephens lab. DSC provides a framework for managing computational benchmarking experiments that compare several competing methods for a task across datasets or simulation scenarios.</p>
 <div id="run-simulations-using-dsc" class="section level2">
 <h2>Run simulations using DSC</h2>
@@ -609,26 +742,38 @@ dsc benchmark.dsc target susie_v --truncate</code></pre>
 
 sbatch jupyter-lab.sbatch </code></pre>
 <p>I would see <code>Submitted batch job 57433075</code>.</p>
+<p>want until showq has the job, check the following</p>
+<pre><code>showq
+ll</code></pre>
 <pre><code>cat nb-log-57433075.out</code></pre>
-<p>I would get a command start with <code>ssh</code> and a website looks like <code>localhost:9148</code>. Now open a new terminal and get on midway again and paste that <code>ssh</code> command.</p>
-<pre><code>ssh kaiqianz@midway2.rcc.uchicago.edu
-
-ssh -N -L 9148:10.50.221.3:9148 kaiqianz@midway2.rcc.uchicago.edu -v</code></pre>
+<p>I would get a command start with <code>ssh</code> and a website looks like <code>localhost:9148</code>. Now open a new terminal and paste that <code>ssh</code> command on my own computer, not on midway.</p>
+<pre><code>ssh -N -L 9148:10.50.221.3:9148 kaiqianz@midway2.rcc.uchicago.edu -v</code></pre>
 <p>Then we can open the website <code>localhost:9148</code> on google chrome. To retrieve the token asked from the website, we do</p>
 <pre><code>cat nb-log-57433075.err</code></pre>
 <p>to get the token.</p>
 <p>Now we are ready to go. We have all simulation results in python notebook so that we can do analysis!</p>
 </div>
-<div id="session-information" class="section level2">
-<h2>Session information</h2>
+<div id="how-to-debug-then" class="section level2">
+<h2>How to debug then…</h2>
+<p>Now we are on the online jupyter notebook which contains all the error data from midway. When we ran dsc, we got the error message like <code>Failed to execute Rscript .sos/sim_gauss_0_7dc66a52.R</code>. Now go to the terminal and cat the Rscript and paste it into the jupyter notebook for your debugging!</p>
+<p>In the terminal</p>
+<pre><code>cat .sos/sim_gauss_0_7dc66a52.R</code></pre>
+<p>And then paste everything shown on the screen to your jupyter notebook.</p>
+<br> <br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 3.4.3 (2017-11-30)
+<pre><code>R version 3.5.3 (2019-03-11)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
 Running under: macOS Sierra 10.12.6
 
 Matrix products: default
-BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -637,14 +782,14 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
- [1] workflowr_1.1.1   Rcpp_1.0.0        rprojroot_1.3-2  
- [4] digest_0.6.18     R.methodsS3_1.7.1 backports_1.1.3  
- [7] git2r_0.24.0      magrittr_1.5      evaluate_0.12    
-[10] stringi_1.2.4     whisker_0.3-2     R.oo_1.22.0      
-[13] R.utils_2.7.0     rmarkdown_1.11    tools_3.4.3      
-[16] stringr_1.3.1     xfun_0.4          yaml_2.2.0       
-[19] compiler_3.4.3    htmltools_0.3.6   knitr_1.21       </code></pre>
+ [1] workflowr_1.2.0 Rcpp_1.0.1      digest_0.6.18   rprojroot_1.3-2
+ [5] backports_1.1.3 git2r_0.25.2    magrittr_1.5    evaluate_0.13  
+ [9] stringi_1.4.3   fs_1.2.7        whisker_0.3-2   rmarkdown_1.12 
+[13] tools_3.5.3     stringr_1.4.0   glue_1.3.1      xfun_0.5       
+[17] yaml_2.2.0      compiler_3.5.3  htmltools_0.3.6 knitr_1.22     </code></pre>
 </div>
+</div>
+
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
@@ -657,14 +802,6 @@ footer is added to webpages before the MathJax javascript. -->
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
 </script>
-
-<hr>
-<p>
-  This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a>
-  analysis was created with
-  <a href="https://github.com/jdblischak/workflowr">workflowr</a> 1.1.1
-</p>
-<hr>
 
 
 </div>
