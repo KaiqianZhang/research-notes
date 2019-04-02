@@ -462,7 +462,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-03-29
+<strong>Last updated:</strong> 2019-04-02
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -541,10 +541,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaiqianZhangresearchnotestree033b94203eea12b9ced105cdd122b52aec4db816targetblank033b942a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaiqianZhang/research-notes/tree/033b94203eea12b9ced105cdd122b52aec4db816" target="_blank">033b942</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaiqianZhangresearchnotestreec0b73d27f043dcc5b33be66b90ce8ddc244d1717targetblankc0b73d2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaiqianZhang/research-notes/tree/c0b73d27f043dcc5b33be66b90ce8ddc244d1717" target="_blank">c0b73d2</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaiqianZhangresearchnotestree033b94203eea12b9ced105cdd122b52aec4db816targetblank033b942a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaiqianZhangresearchnotestreec0b73d27f043dcc5b33be66b90ce8ddc244d1717targetblankc0b73d2a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -599,6 +599,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaiqianZhang/research-notes/blob/c0b73d27f043dcc5b33be66b90ce8ddc244d1717/analysis/use_cluster_and_dsc.Rmd" target="_blank">c0b73d2</a>
+</td>
+<td>
+kaiqian
+</td>
+<td>
+2019-04-02
+</td>
+<td>
+add how to use and write yml instruction in DSC
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaiqianZhang/research-notes/27fa79b54c98678eda4f6cbdb79e75d22b42f6e6/docs/use_cluster_and_dsc.html" target="_blank">27fa79b</a>
+</td>
+<td>
+kaiqian
+</td>
+<td>
+2019-03-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -759,6 +793,68 @@ ll</code></pre>
 <p>In the terminal</p>
 <pre><code>cat .sos/sim_gauss_0_7dc66a52.R</code></pre>
 <p>And then paste everything shown on the screen to your jupyter notebook.</p>
+</div>
+<div id="use-yml-to-run-cluster-simulations" class="section level2">
+<h2>Use yml to run cluster simulations</h2>
+<p>Here is a template for yml file <code>kaiqian_midway.yml</code>. If each instance in your job takes a very short time, you can submit more instances per job to save more time.</p>
+<pre><code>DSC:
+  midway2:
+    description: UChicago RCC cluster Midway 2
+    address: kaiqianz@midway2.rcc.uchicago.edu
+    paths:
+      home: /home/kaiqianz
+    queue_type: pbs
+    status_check_interval: 60
+    max_running_jobs: 30
+    max_cores: 40
+    max_walltime: &quot;36:00:00&quot;
+    max_mem: 64G
+    job_template: |
+      #!/bin/bash
+      #SBATCH --time={walltime}
+      #{partition}
+      #{account}
+      #SBATCH --nodes=1
+      #SBATCH --ntasks-per-node={cores}
+      #SBATCH --mem-per-cpu={mem//10**9}G
+      #SBATCH --job-name={job_name}
+      #SBATCH --output={cur_dir}/{job_name}.out
+      #SBATCH --error={cur_dir}/{job_name}.err
+      cd {cur_dir}
+      module load R
+    partition: &quot;SBATCH --partition=broadwl&quot;
+    account: &quot;&quot;
+    submit_cmd: sbatch {job_file}
+    submit_cmd_output: &quot;Submitted batch job {job_id}&quot;
+    status_cmd: squeue --job {job_id}
+    kill_cmd: scancel {job_id}
+  midway2_head:
+    based_on: midway2
+    address: localhost
+  stephenslab:
+    based_on: midway2
+    max_cores: 28
+    max_mem: 128G
+    max_walltime: &quot;10d&quot;
+    partition: &quot;SBATCH --partition=mstephens&quot;
+    account: &quot;SBATCH --account=pi-mstephens&quot;
+
+default:
+  queue: midway2_head
+  time_per_instance: 10m
+  instances_per_job: 10
+  n_cpu: 1
+  mem_per_cpu: 2G
+
+simulate:
+  time_per_instance: 2m
+  
+score:
+  time_per_instance: 2m
+  </code></pre>
+<p>After adding this yml file to your repo, you can run the following command on an sinteractive node.</p>
+<pre><code>dsc benchmark.dsc --host kaiqian_midway.yml --replicate 50 -c 40
+</code></pre>
 <br> <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
