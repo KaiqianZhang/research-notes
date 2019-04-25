@@ -1,0 +1,61 @@
+---
+title: "How to set up a workflow project"
+author: "Kaiqian Zhang"
+date: "4/25/2019"
+output:
+  workflowr::wflow_html:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this vignette, we will go through how to set up a workflowr project.
+
+### Step 1
+
+Go to Kaiqian's github page and create a new repo called "myproject".
+
+### Step 2
+
+Choose a directory to `git clone github-link-for-myproject-repo`. Now this directory contains a folder called `myproject`.
+
+### Step 3
+
+Open R and in the R console, set the directory to the directory mentioned in step 2. Under this directory,
+
+```
+setwd("step2-directory")
+
+library(workflowr)
+
+wflow_start("myproject", existing=TRUE)
+
+wflow_build()
+
+```
+
+### Step 4
+
+Open `myproject` folder to see that we have a Rproj existed already now. Open Rproj and edit `analysis/index.Rmd` and then 
+
+```
+wflow_publish(c("analysis/index.Rmd", "analysis/about.Rmd", "analysis/license.Rmd"), "first commit for this project.")
+
+```
+
+### Step 5
+
+In the terminal, go into `myproject` folder and 
+
+```
+git push
+```
+
+### Step 6
+
+Go to Kaiqian's github, under `Settings` -> `Github Pages` -> Choose `Source` -> `master branch /docs folder` to get the project link. Put the link in the repo description. Done!
+
+
+
