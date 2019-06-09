@@ -15,3 +15,5 @@ Welcome to Kaiqian's research website. This is exactly Kaiqian's daily life with
 * Please click on [Clusters and DSC Notes](use_cluster_and_dsc.html) to see my notes.
 
 * Please click on [How to set up a workflowr project](set_up_wflowr_project.html) to see my notes.
+
+* Please click on [How to install R packages and solve compile problems](package_install.html) to see my notes.

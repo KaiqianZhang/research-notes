@@ -1,0 +1,14 @@
+---
+title: "How to install R packages and solve compile problems"
+author: "Kaiqian Zhang"
+date: "6/9/2019"
+output:
+  workflowr::wflow_html:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Sometimes we need to intall R packages from source when those packages are not on the CRAN. However, as a Mac user, we came across some problems about missing necessary compilers such as Command Line Tools. Please refer [Peter's writeup](https://pcarbo.github.io/pcarbo/r-macos.html) for solving this problem.
