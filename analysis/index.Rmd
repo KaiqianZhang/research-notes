@@ -20,8 +20,8 @@ Welcome to Kaiqian's research website. This is exactly Kaiqian's daily life with
 
 ## Toolkit: Reinforcement Learning
 
-* [Overview of reinforcement learning](RL-1.html)
+* RL part 1: [Overview of reinforcement learning](RL-1.html)
 
-* [Markov Decision Process](RL-2.html)
+* RL part 2: [Markov decision process](RL-2.html)
 
 
