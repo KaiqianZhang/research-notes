@@ -1,0 +1,77 @@
+---
+title: "Reinforcement Learning Part 1"
+author: "Kaiqian Zhang"
+date: "6/14/2019"
+output:
+  workflowr::wflow_html:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Source
+
+- [Reinforcement learning course](https://www.youtube.com/watch?v=FgzM3zpZ55o) offered by Standford in 2019. 
+
+## Overview of RL
+
+- What is reinforcement learning? learn to make good sequences of decisions./ Sequential decision making under uncertainty.
+
+- Goal: select actions to maximize total expected future reward.
+
+### Model
+
+- Mathematical models of dynamics and reward.
+
+### Policies $\pi$
+
+- Definition: some mappings from experiences to a decision. Policy determines how the agent chooses actions.
+
+- $\pi: S \to A$, mappings from states to actions.
+
+- Deterministic policy: $\pi(s) = a$.
+
+- Stochastic policy: $\pi(a|s) = \text{Pr}(a_t=a|s_t = s)$.
+
+### Value $V^{\pi}$
+
+- Definition: expected discounted sum of future rewards under a particular policy $\pi$
+
+$$
+V^{\pi}(s_t=s) = \text{E}_{\pi}[r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + \dots | s_t=s],
+$$
+where discount factor $\gamma$ weighs immediate or future rewards.
+
+- Can be used to quantify goodness/badness of states and actions.
+
+- And decide how to act by comparing policies.
+
+- If $\gamma$ is zero, it means that we only care about immediate reward.
+
+### Types of sequential decision processes
+
+- Bandit: actions have no influence on next observations.
+
+- MDPs and POMDPs: actions influence future observations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

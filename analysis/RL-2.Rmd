@@ -1,0 +1,160 @@
+---
+title: "Reinforcement Learning Part 2: Markov Decision Process"
+author: "Kaiqian Zhang"
+date: "6/19/2019"
+output:
+  workflowr::wflow_html:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview
+
+- Given the model of the world, ...
+
+- An agent takes an action $a_t$ to the world, and then receives back a state $s_t$ and a reward $r_t$. 
+
+## Markov Reward Process
+
+- Markov Reward Process is a Markov Chain + reward.
+    
+    - $S$ is a finite set of states.
+    
+    - $P$ is the transition model/matrix that specifies $P(s_{t+1}=s' | s_t=s)$.
+    
+    - $R$ is a reward function $R(s_t=s) = \text{E}[r_t|s_t=s]$.
+    
+    - Discount factor $\gamma \in [0,1]$.
+
+- Note: no actions yet.
+
+### Horizon
+
+- Number of time steps in each episode./ How long is this agent is acting for.
+
+- Can be infinite./ The agent can be acting forever.
+
+### Return $G_t$
+
+- Dicounted sum of rewards from current time step $t$ to horizon:
+$$
+G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + \dots.
+$$
+
+### State value function $V(s)$
+
+- Expected return from starting in state $s$:
+$$
+V(s) = \text{E}[G_t|s_t=s] = \text{E}[r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + \dots | s_t=s].
+$$
+
+- Using Markov property, we can decompose value function into:
+$$
+V(s) = R(s) + \gamma \sum_{s'\in S} \text{P}(s'|s)V(s'), 
+$$
+which is immediate reward + discounted sum of future rewards.
+$$
+V = R + \gamma PV \\
+V = (I-\gamma P)^{-1}R.
+$$
+
+### State-action value $Q$
+
+In addition to state value function $V^{\pi}(s)$, we have state-action value function:
+$$
+Q^{\pi}(s,a) = R(s,a) + \gamma\sum_{s'\in S}P(s'|s,a)V^{\pi}(s'),
+$$
+which means that take action $a$, then follow policy $\pi$.
+
+### Discount factor $\gamma$
+
+- Typically, we weigh future rewards lower than immediate rewards.
+
+- $\gamma=0$: only care about immediate reward.
+
+- $\gamma=1$: future reward is as beneficial as immediate reward.
+
+## Markov Decision Process
+
+- Markov Decision Process is Markov Reward Process + actions.
+
+    - $S$ is a finite set of Markov states.
+    
+    - $A$ is a finite set of actions.
+    
+    - $P$ is a transition model for each action that specifies $P(s_{t+1}=s' | s_t=s, a_t=a) $.
+    
+    - $R$ is a reward function $R(s_t=s, a_t=a) = \text{E}[r_t | s_t=s, a_t=a]$.
+    
+    - Discount factor $\gamma \in [0,1]$.
+    
+- MDP is a tuple: $(S,A,P,R,\gamma)$.
+
+## MDP + policy = MRP
+
+- Markov Decision Process + $\pi(a|s)$ = Markov Reward Process.
+
+- Precisely, it is MRP$(S, R^{\pi}, P^{\pi}, \gamma)$, where
+$$
+R^{\pi}(s) = \sum_{a\in A} \pi(a|s)R(s,a)\\
+P^{\pi}(s'|s) = \sum_{a\in A} \pi(a|s)P(s'|s,a).
+$$
+
+## MDP control
+
+- Instead of computing policies, we want our agent to learn policies.
+
+- Note: there exists a unique optimal value function, but the optimal policy is not unique.
+
+### MDP policy iteration
+
+- Initialization: start from one random policy $\pi_0$. The subscript is the iteration for policy.
+
+- While $i==0$ or $||\pi_i - \pi_{i-1}||_1 > 0 $:
+    
+    - Policy evaluation: compute $V^{\pi_i}$;
+    
+    - Policy improvement: for all $s\in S$ and for all $a \in A$, compute $Q^{\pi_i}(s,a)$. Set the new policy 
+$$
+    \pi_{i+1}(s) = \text{argmax}_aQ^{\pi_i}(s,a) \forall s\in S;
+$$
+     - $i = i+1$.
+     
+## Contraction operator
+
+- Let $O$ be an operator, and $|x|$ denote any norm of the vector $x$. If 
+$$
+|Ox - Ox'| \leq |x-x'|,
+$$
+then $O$ is a contraction operator. Bellman backup is a contraction operator. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
