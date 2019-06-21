@@ -24,4 +24,6 @@ Welcome to Kaiqian's research website. This is exactly Kaiqian's daily life with
 
 * RL part 2: [Markov decision process](RL-2.html)
 
+* RL part 3: [Model-free policy evaluation](RL-3.html)
+
 
