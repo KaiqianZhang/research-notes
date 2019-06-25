@@ -85,7 +85,7 @@ which means that take action $a$, then follow policy $\pi$.
     
     - $A$ is a finite set of actions.
     
-    - $P$ is a transition model for each action that specifies $P(s_{t+1}=s' | s_t=s, a_t=a) $.
+    - $P$ is a transition model for each action that specifies $P(s_{t+1}=s'|s_t=s, a_t=a)$.
     
     - $R$ is a reward function $R(s_t=s, a_t=a) = \text{E}[r_t | s_t=s, a_t=a]$.
     
