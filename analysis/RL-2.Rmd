@@ -113,7 +113,7 @@ $$
 
 - Initialization: start from one random policy $\pi_0$. The subscript is the iteration for policy.
 
-- While $i==0$ or $||\pi_i - \pi_{i-1}||_1 > 0 $:
+- While $i==0$ or $||\pi_i - \pi_{i-1}||_1 > 0$:
     
     - Policy evaluation: compute $V^{\pi_i}$;
     
