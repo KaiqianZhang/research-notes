@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Source
 
-- [Reinforcement learning course](https://www.youtube.com/watch?v=FgzM3zpZ55o) offered by Standford in 2019. 
+- [Reinforcement learning course](https://www.youtube.com/watch?v=FgzM3zpZ55o) offered by Stanford in 2019. 
 
 ## Overview of RL
 
