@@ -54,6 +54,12 @@ What if we do not have a model?
             - $N(s) = N(s)+1$, $G(s) = G(s) + G_{i,t}$.
             
             - Update estimate $V^{\pi}(s) = G(s)/N(s)$.
+            
+### Limitation
+
+- Requires a lot of data.
+
+- Requires episodic settings: Episode must end before data from that episode can be used to update the value function.
 
 ## MSE
 
@@ -61,6 +67,81 @@ What if we do not have a model?
 $$
 \text{MSE}(\hat{\theta}) = \text{Var}(\hat{\theta}) + \text{Bias}_{\theta}(\hat{\theta})^2.
 $$
+
+## Temporal Difference (TD) learning
+
+### Overview
+
+- Combination of Monte Carlo and dynamic programming methods.
+
+- Model-free.
+
+- Bootstraps and samples.
+
+- Can be used in episodic or infinite-horizon non-episodic settings.
+
+- Immediately updates estimate of $V$ after each $(s,a,r,s')$ tuple.
+
+### Understand TD
+
+- Aim: estimate $V^{\pi}(s)$ given episodes generated under policy $\pi$.
+
+    - $s_1,a_1,r_1,s_2,a_2,r_2,\dots$ where the actions are sampled from $\pi$.
+  
+- Recall definitions for $G_t$ and $V^{\pi}(s)$.
+
+- In incremental every-visit MC, update estimate using 1 sample of return (for the current ith episode)
+
+$$
+V^{\pi}(s) = V^{\pi}(s) + \alpha(G_{i,t}-V^{\pi}(s)).
+$$
+
+- Insight: incorporating bootstrapping to estimate $V^{\pi}(s)$:
+
+$$
+V^{\pi}(s_t) = V^{\pi}(s_t) + \alpha([r_t+\gamma V^{\pi}(s_{t+1})]-V^{\pi}(s_t)).
+$$
+
+### TD algorithm
+
+- Input: $\alpha$.
+
+- Initialize $V^{\pi}(s)=0, \forall s\in S$.
+
+- Loop
+
+    - Sample tuple $(s_t, a_t, r_t, s_{t+1}).$
+    
+    - $V^{\pi}(s_t) = V^{\pi}(s_t) + \alpha(\underbrace{[r_t+\gamma V^{\pi}(s_{t+1})]}_{\text{TD target}}-V^{\pi}(s_t))$.
+
+## Model-free policy evaluation algorithms comparison
+
+- MC
+
+    - Unbiased.
+    
+    - High variance.
+    
+    - Consistent (converges to true) even with function approximation.
+
+
+- TD
+
+    - Some bias.
+    
+    - Lower variance.
+    
+    - TD(0) converges to zero with tabular representation.
+    
+    - TD(0) does not always converge with function approximation.
+    
+    
+
+
+
+
+
+
 
 
 
