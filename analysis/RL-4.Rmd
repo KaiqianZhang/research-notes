@@ -1,0 +1,162 @@
+---
+title: "Reinforcement Learning Part 4: Model Free Control"
+author: "Kaiqian Zhang"
+date: "6/26/2019"
+output:
+  workflowr::wflow_html:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Previous: how good a policy is?
+
+Today: how can we learn a good policy?
+
+## On-policy vs. off-policy learning
+
+- On-policy learning
+    
+    - Direct experience
+    
+    - Learn to estimate and evaluate a policy from experience obtained from following that policy.
+    
+- Off-policy learning
+
+    - Learn to estimate and evaluate a policy using experience gathered from following a different policy.
+    
+    
+## General algorithm: MC for on-policy Q evaluation
+
+- Initialize $N(s,a)=0, G(s,a)=0, Q^{\pi}(s,a)=0, \forall s \in S, \forall a \in A$
+
+- Loop
+
+    - Using policy $\pi$ sample episode $i=s_{i,1}, a_{i,1}, r_{i,1}, s_{i,2}, a_{i,2}, r_{i,2}, \dots, s_{i,T_i}$.
+    
+    - $G_{i,t} = r_{i,t}+\gamma r_{i,t+1}, \gamma^2 r_{i,t+2}, \dots, \gamma^{T_{i-1}}r_{i,T_i}$.
+    
+    - For each state, action $(s,a)$ visited in episode $i$:
+    
+        - For first or every time $t$ that $(s,a)$ is visited in episode $i$:
+        
+            - $N(s,a)=N(s,a)+1, G(s,a)=G(s,a)+G_{i,t}$.
+            
+            - Update estimate $Q^{\pi}(s,a)=G(s,a)/N(s,a)$.
+            
+            - Update new policy $\pi_{i+1}(s) = \text{argmax}_a Q^{\pi_i}(s,a)$.
+            
+
+Now we introduce a policy.
+
+## $\epsilon$-greedy policy
+
+- Simple idea to balance exploration and exploitation.
+
+- Let $|A|$ be the number of actions.
+
+- Then an $\epsilon$-greedy policy with respect to a state action value $Q^{\pi}(s,a)$ is 
+
+
+\[
+\pi(a|s) = 
+\begin{cases}
+\text{argmax}_a Q^{\pi}(s,a) & \text{with probability }1-\epsilon \\
+\text{random action } a &\text{with probability }\epsilon/|A|.
+\end{cases}
+\]
+
+
+Here are some algorithms using $\epsilon$-greedy policy.
+
+## Monte Carlo online control
+
+- Initialize $Q(s,a)=0, N(s,a)=0, \forall (s,a), $ Set $\epsilon=1, k=1$.
+
+- $\pi_k = \epsilon$-greedy$(Q)$ // Create initial $\epsilon$-greedy policy.
+
+- Loop
+
+    - Sample $k-$th episode ($s_{k,1}, a_{k,1}, r_{k,1}, s_{k,2}, a_{k,2}, r_{k,2}, \dots, s_{k,T_k}$) given $\pi_k$.
+    
+    - $G_{k,t} = r_{k,t}+\gamma r_{k,t+1}, \gamma^2 r_{k,t+2}, \dots, \gamma^{T_{k-1}}r_{k,T_k}$.
+    
+    - For $t=1,\dots, T$ do
+    
+        - If first visit to episode $k$ then 
+        
+            - $N(s,a) = N(s,a)+1$
+            
+            - $Q(s_t, a_t) = Q(s_t, a_t) + \frac{1}{N(s,a)}(G_{k,t}- Q(s_t, a_t))$.
+            
+        - End if.
+      
+    - End for.
+    
+    - $k=k+1, \epsilon = 1/k$
+    
+    - $\pi_k = \epsilon$-greedy$(Q)$ //Policy improvement.
+    
+- End loop.
+
+
+## SARSA algorithm
+
+- Set initial $\epsilon$-greedy policy $\pi$, $t=0$, initial state $s_t=s_0$.
+
+- Take $a_t \sim \pi(s_t)$ // Sample action from policy.
+
+- Observe $(r_t, s_{t+1})$.
+
+- Loop 
+
+    - Take action $a_{t+1} \sim \pi(s_{t+1})$.
+    
+    - Observe $(r_{t+1}, s_{t+1})$.
+    
+    - $Q(s_t,a_t) <- Q(s_t,a_t) + \alpha (r_t+ \gamma Q(s_t, a_{t+1}) - Q(s_t, a_t))$.
+    
+    - $\pi(s_t) = \text{argmax}_a Q(s_t, a)$ with probability $1-\epsilon$, else random action.
+    
+    - $t= t+1$.
+    
+- End loop.
+
+
+## Off-policy: Q-learning with $\epsilon$-greedy exploration
+
+- Initialize $Q(s,a) \forall s \in S, a \in A$, $t=0, s_t=s_0$.
+
+- Set $\pi_b$ to be $\epsilon$-greedy with respect to Q.
+
+- Loop
+
+    - Take $a_t \sim \pi_b(s_t)$ // Sample action from policy
+    
+    - Observe $(r_t, s_{t+1})$.
+    
+    - $Q(s_t, a_t) <- Q(s_t, a_t) + \alpha (r_t + \gamma \text{max}_a Q(s_t_1, a) - Q(s_t,a_t))$.
+    
+    - $\pi(s_t) = \text{argmax}_a Q(s_t, a)$ with probability $1-\epsilon$, else random action.
+    
+    - $t= t+1$.
+    
+- End loop.
+
+
+
+
+
+
+
+
+  
+    
+
+
+
+
+
+
