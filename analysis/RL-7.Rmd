@@ -1,0 +1,81 @@
+---
+title: 'Reinforcement Learning Part 7: Imitation Learning With Large State Spaces'
+author: "Kaiqian Zhang"
+date: "7/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Where is imitation learning successful?
+
+- When data is cheap and parallelization is easy.
+
+## Examples
+
+- Simulated highway driving
+
+- Parking lot navigation
+
+- Human path planning
+
+## Imitation learning
+
+- a.k.a: inverse RL, learning from demonstration
+
+- Expert provides a set of demonstration trajectories: sequences of states and actions
+
+- Imitation learning is useful when it is easier for the expert to demonstrate the desired behavior rather than: (1) specifying a reward that would generate such behavior; (2) specifying the desired policy directly.
+
+## Problem setup
+
+- Input:
+
+    - state space, action space
+    
+    - transition model $P(s'|s,a)$
+    
+    - no reward function $R$
+    
+    - a set of expert's demonstrations
+    
+- Behavior cloning
+
+    - Can we directly learn the teacher's policy using supervised learning?
+    
+- Inverse RL
+
+    - Can we recover R (reward function)?
+    
+- Apprenticeship learning via inverse RL
+
+    - Can we use R to generate a good policy?
+    
+## Behavior cloning 
+
+- Formulate problem as a standard machine learning problem
+
+    - fix a policy class (e.g. neural network, decision tree, etc.)
+    
+    - estimate policy from training/expert examples $(s_0, a_0), (s_1, a_1), (s_2, a_2), \dots$
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+

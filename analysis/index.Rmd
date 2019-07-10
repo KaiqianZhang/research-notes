@@ -28,6 +28,8 @@ Welcome to Kaiqian's research website. This is exactly Kaiqian's daily life with
 
 * RL part 4: [Model free control](RL-4.html)
 
+* RL part 5: [Value function approximation](RL-5.html)
 
+* RL part 7: [Imitation learning](RL-7.html)
 
 
