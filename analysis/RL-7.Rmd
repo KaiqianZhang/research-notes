@@ -63,14 +63,56 @@ knitr::opts_chunk$set(echo = TRUE)
     - estimate policy from training/expert examples $(s_0, a_0), (s_1, a_1), (s_2, a_2), \dots$
     
     
+## Linear feature reward inverse RL
+
+- Consider when reward is linear over features
+
+    - $R(s) = \boldsymbol{w}^Tx(s)$ where $\boldsymbol{w} \in \mathbb{R}^n, x: S \to \mathbb{R}^n$
     
+- Goal: identify the weight vector $\boldsymbol{w}$ given a set of demonstrations.
+
+- The resulting value function for a policy $\pi$ can be expressed as 
+
+
+$$
+V^{\pi} = \text{E}[\sum_{t=0}^{\infty} \gamma^t R(s_t)|\pi] = \text{E}[\sum_{t=0}^{\infty} \gamma^t \boldsymbol{w}^Tx(s)|\pi]\\
+ = \boldsymbol{w}^T\text{E}[\sum_{t=0}^{\infty} \gamma^t x(s)|\pi]\\
+ = \boldsymbol{w}^T \mu(\pi),
+$$
+
+where $\mu(\pi)(s)$ is defined as the discounted weighted frequency of state features under policy $\pi$.
+
+## Apprenticeship learning
+
+- Along with above `Linear feature reward inverse RL`
+
+- Note 
+
+$$
+\text{E}[\sum_{t=0}^{\infty} \gamma^t R^*(s_t)|\pi^*] = V^* \geq V^{\pi} = \text{E}[\sum_{t=0}^{\infty} \gamma^t R^*(s_t)|\pi].
+$$
+
+- Therefore, if the expert's demonstrations are from the optimal policy, to identify $\boldsymbol{w}$ it is sufficient to find $w^*$ such that 
+
+$$
+(w^*)^T \mu(\pi^*) \geq (w^*)^T \mu(\pi), \forall \pi \neq \pi^*.
+$$
+
+### Apprenticeship learning algorithm
+
+- Assumption: $R(s) = w^T x(s)$.
+
+- Initialize policy $\pi_0$.
+
+- For $i = 1,2,\dots$:
+
+    - Find a reward function that the teacher maximally outperforms all previous controllers:$$\text{argmax}_{w}\text{max}_{\gamma} \text{s.t.} w^T \mu(\pi^*) \geq w^T \mu(\pi) + \gamma \forall \pi \in \{\pi_0, \pi_1,\dots, \pi_{i-1}\}$$
+
+    * s.t. $||w||_2 \leq 1$
     
+    * Find optimal control policy $\pi_i$ for the current $w$
     
-
-
-
-
-
+    * Exit if $\gamma \leq \epsilon/2$.
 
 
 
